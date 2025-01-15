@@ -10,7 +10,6 @@
     --transition-default: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Keep all other CSS rules exactly the same, just the colors above will create the depressing theme */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
@@ -120,4 +119,57 @@ footer {
     text-align: center;
     color: var(--text-light);
     font-size: 0.9rem;
+}
+
+/* Additional styling for a more detailed dark theme */
+a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color var(--transition-default);
+}
+
+a:hover {
+    color: var(--primary-light);
+}
+
+button {
+    background: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background var(--transition-default);
+}
+
+button:hover {
+    background: var(--primary-light);
+}
+
+.card {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-default);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+input, textarea {
+    background: rgba(26, 26, 26, 0.8);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    transition: background var(--transition-default);
+}
+
+input:focus, textarea:focus {
+    background: var(--primary-dark);
+    outline: none;
 }
