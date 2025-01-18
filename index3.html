@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
-    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
@@ -22,18 +22,22 @@
         </section>
 
         <section id="flagDisplay" class="flag-display">
-            <p class="placeholder">3</p>
+            <p class="placeholder">third page</p>
         </section>
     </main>
 
     <footer class="footer">
         <nav>
-            <a href="index.html">1</a>
             <a href="index2.html">2</a>
+            <a href="index.html">1</a>
         </nav>
         <section id="countryFact" class="country-fact"></section>
+        <div class="page-navigation">
+            <button class="nav-button" onclick="window.location.href='index2.html'">&larr; back</button>
+            <button class="nav-button" onclick="window.location.href='index.html'">Next &rarr;</button>
+        </div>
     </footer>
 
-    <script src="script3.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
