@@ -3,38 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <meta name="description" content="Flag Finder - Search and discover flags from around the world">
+    <title>Flag Finder | World Flags Database</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
-        <h1>MIO</h1>
-    </header>
-
     <main class="main-content">
         <section class="search-section">
-            <h2>Search for a ... </h2>
-            <div class="search-box">
-                <input type="text" id="countryInput" placeholder="what you looking for little bunny...">
-                <button onclick="searchFlag()">Search</button>
+            <h2>Search for a Country Flag</h2>
+            <div class="search-box"></div>
+                <input type="text" id="countryInput" placeholder="Enter country name...">
+                <button id="searchButton" onclick="searchFlag()">
+                    <i class="fas fa-search"></i> Search
+                </button>
             </div>
             <p class="instructions">Type a country's name and click "Search" to see its flag.</p>
         </section>
 
         <section id="flagDisplay" class="flag-display">
-            <p class="placeholder">flag finder</p>
+            <div id="flagResult"></div>
+            <div id="countryInfo"></div>
         </section>
     </main>
 
     <footer class="footer">
-        <nav>
+        <nav class="pagination">
+            <a href="index.html" class="active">1</a>
             <a href="index2.html">2</a>
             <a href="index3.html">3</a>
         </nav>
         <section id="countryFact" class="country-fact"></section>
+            <!-- Facts will be dynamically inserted here by script.js -->
+        </section>
         <div class="page-navigation">
-            <button class="nav-button" onclick="window.location.href='index.html'">&larr; back</button>
-            <button class="nav-button" onclick="window.location.href='index2.html'">Next &rarr;</button>
+            <button class="nav-button" onclick="window.location.href='index.html'">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <button class="nav-button" onclick="window.location.href='index2.html'">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </footer>
 
