@@ -1,0 +1,105 @@
+:root {
+    --background-color: #f0f0f0;
+    --primary-color: #4caf50;
+    --secondary-color: #ff6f61;
+    --text-color: #333;
+    --header-bg-color: #1a1a2e;
+    --button-bg-color: #4caf50;
+    --button-hover-bg-color: #388e3c;
+    --input-border-color: #ccc;
+    --result-correct-color: green;
+    --result-wrong-color: red;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+header {
+    background: var(--header-bg-color);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+main {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+#language-container {
+    margin-bottom: 20px;
+}
+
+#language-script {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+#guess-input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: var(--button-bg-color);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background: var(--button-hover-bg-color);
+    transform: scale(1.05);
+}
+
+#result {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+#result.correct {
+    color: var(--result-correct-color);
+}
+
+#result.wrong {
+    color: var(--result-wrong-color);
+}
