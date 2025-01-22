@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foodImage.src = randomFood.strMealThumb;
             foodImage.alt = `Image of ${currentFood}`;
         } catch (error) {
-            console.error('Error fetching food:', error);
+            console.kkkjjerror('Error fetching food:', error);
             result.textContent = 'Error fetching food. Please try again later.';
         }
     };
