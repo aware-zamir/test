@@ -1,2 +1,1 @@
-this is just a text file that contains few line of context in one file shaped by linguestic symbols of the most spoken language recently 
-well i'm editing this text from linux terminal itself
+pattern recognition
