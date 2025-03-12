@@ -1,11 +1,4 @@
-function showMessage() {
-    alert("wassssssaaaaaaaaaaaap");
-}
-
-// To attach the function dynamically (alternative to using inline onclick)
-document.addEventListener("DOMContentLoaded", function () {
-    let button = document.getElementById("myButton");
-    if (button) {
-        button.addEventListener("click", showMessage);
-    }
+document.getElementById("redButton").addEventListener("click", function() {
+    let randomNumber = Math.floor(Math.random() * 10) + 1; 
+    document.getElementById("numberDisplay").textContent = randomNumber;
 });
