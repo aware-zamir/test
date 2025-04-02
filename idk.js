@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
-        { id: 1, name: 'Product 1', price: 10, image: 'https://via.placeholder.com/150' },
-        { id: 2, name: 'Product 2', price: 15, image: 'https://via.placeholder.com/150' },
-        { id: 3, name: 'Product 3', price: 20, image: 'https://via.placeholder.com/150' },
-        { id: 4, name: 'Product 4', price: 25, image: 'https://via.placeholder.com/150' },
-        { id: 5, name: 'Product 5', price: 30, image: 'https://via.placeholder.com/150' },
-        { id: 6, name: 'Product 6', price: 35, image: 'https://via.placeholder.com/150' },
-        { id: 7, name: 'Product 7', price: 40, image: 'https://via.placeholder.com/150' },
-        { id: 8, name: 'Product 8', price: 45, image: 'https://via.placeholder.com/150' },
-        { id: 9, name: 'Product 9', price: 50, image: 'https://via.placeholder.com/150' },
-        { id: 10, name: 'Product 10', price: 55, image: 'https://via.placeholder.com/150' },
+        { id: 1, name: '1', price: 10, image: '' },
+        { id: 2, name: '2', price: 15, image: '' },
+        { id: 3, name: '3', price: 20, image: '' },
+        { id: 4, name: '4', price: 25, image: '' },
+        { id: 5, name: '5', price: 30, image: '' },
+        { id: 6, name: '6', price: 35, image: '' },
+        { id: 7, name: '7', price: 40, image: '' },
+        { id: 8, name: '8', price: 45, image: '' },
+        { id: 9, name: '9', price: 50, image: '' },
+        { id: 10, name: '10', price: 55, image: '' },
     ];
 
     const cart = [];

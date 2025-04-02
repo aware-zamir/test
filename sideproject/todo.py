@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import ttk
 import sqlite3
 
 # Database setup
@@ -32,25 +33,24 @@ def add_task():
 
 # Load tasks
 def load_tasks():
-    task_list.delete(0, tk.END)
+    for row in task_table.get_children():
+        task_table.delete(row)
     conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, task, completed FROM tasks")
     tasks = cursor.fetchall()
     conn.close()
     for task in tasks:
-        display_text = f"[✓] {task[1]}" if task[2] else f"[ ] {task[1]}"
-        task_list.insert(tk.END, display_text)
+        status = "Completed" if task[2] else "Pending"
+        task_table.insert("", tk.END, values=(task[1], status))
 
 # Mark as completed
 def complete_task():
     try:
-        selected_index = task_list.curselection()[0]
+        selected_item = task_table.selection()[0]
+        task_id = task_table.item(selected_item)["values"][0]
         conn = sqlite3.connect("tasks.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM tasks")
-        task_ids = [row[0] for row in cursor.fetchall()]
-        task_id = task_ids[selected_index]
         cursor.execute("UPDATE tasks SET completed = 1 WHERE id = ?", (task_id,))
         conn.commit()
         conn.close()
@@ -61,12 +61,10 @@ def complete_task():
 # Delete task
 def delete_task():
     try:
-        selected_index = task_list.curselection()[0]
+        selected_item = task_table.selection()[0]
+        task_id = task_table.item(selected_item)["values"][0]
         conn = sqlite3.connect("tasks.db")
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM tasks")
-        task_ids = [row[0] for row in cursor.fetchall()]
-        task_id = task_ids[selected_index]
         cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
         conn.commit()
         conn.close()
@@ -77,25 +75,81 @@ def delete_task():
 # GUI Setup
 app = tk.Tk()
 app.title("To-Do List")
-app.geometry("400x500")
-app.configure(bg="#F0F0F0")
+app.geometry("600x450")  # Reduced size
+app.configure(bg="#1E1E1E")  # Modern dark theme
 
-title_label = tk.Label(app, text="To-Do List", font=("Arial", 16, "bold"), bg="#F0F0F0")
+# Title
+title_label = tk.Label(
+    app, 
+    text="To-Do List", 
+    font=("Arial", 18, "bold"), 
+    bg="#1E1E1E", 
+    fg="#FFFFFF"
+)
 title_label.pack(pady=10)
 
-task_entry = tk.Entry(app, width=40)
-task_entry.pack(pady=5)
+# Task Entry
+task_entry = tk.Entry(
+    app, 
+    width=40,  # Reduced width
+    font=("Arial", 12), 
+    bg="#2D2D2D", 
+    fg="#FFFFFF", 
+    insertbackground="#FFFFFF"
+)
+task_entry.pack(pady=10)
 
-task_list = tk.Listbox(app, width=50, height=15)
-task_list.pack(pady=10)
+# Task Table
+columns = ("Task", "Status")
+task_table = ttk.Treeview(app, columns=columns, show="headings", height=15)  # Reduced height
+task_table.heading("Task", text="Task")
+task_table.heading("Status", text="Status")
+task_table.column("Task", width=400, anchor="w")
+task_table.column("Status", width=100, anchor="center")
+task_table.pack(pady=10)
 
-button_frame = tk.Frame(app, bg="#F0F0F0")
-button_frame.pack()
+# Style for Treeview
+style = ttk.Style()
+style.configure("Treeview", rowheight=25, font=("Arial", 10), background="#2D2D2D", foreground="#FFFFFF", fieldbackground="#2D2D2D")
+style.configure("Treeview.Heading", font=("Arial", 12, "bold"), background="#3C3C3C", foreground="#FFFFFF")
+style.map("Treeview", background=[("selected", "#3C3C3C")], foreground=[("selected", "#FFFFFF")])
 
-tk.Button(button_frame, text="Add", command=add_task, width=10, bg="#4CAF50", fg="white").grid(row=0, column=0, padx=5, pady=5)
-tk.Button(button_frame, text="Complete", command=complete_task, width=10, bg="#2196F3", fg="white").grid(row=0, column=1, padx=5, pady=5)
-tk.Button(button_frame, text="Delete", command=delete_task, width=10, bg="#F44336", fg="white").grid(row=0, column=2, padx=5, pady=5)
+# Button Frame
+button_frame = tk.Frame(app, bg="#1E1E1E")
+button_frame.pack(pady=10)
 
+# Buttons
+tk.Button(
+    button_frame, 
+    text="Add", 
+    command=add_task, 
+    width=10, 
+    bg="#4CAF50", 
+    fg="#FFFFFF", 
+    font=("Arial", 10)
+).grid(row=0, column=0, padx=5, pady=5)
+
+tk.Button(
+    button_frame, 
+    text="Complete", 
+    command=complete_task, 
+    width=10, 
+    bg="#2196F3", 
+    fg="#FFFFFF", 
+    font=("Arial", 10)
+).grid(row=0, column=1, padx=5, pady=5)
+
+tk.Button(
+    button_frame, 
+    text="Delete", 
+    command=delete_task, 
+    width=10, 
+    bg="#F44336", 
+    fg="#FFFFFF", 
+    font=("Arial", 10)
+).grid(row=0, column=2, padx=5, pady=5)
+
+# Initialize Database and Load Tasks
 setup_db()
 load_tasks()
 app.mainloop()
