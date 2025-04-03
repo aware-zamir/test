@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
-        { id: 1, name: '1', price: 10, image: '' },
-        { id: 2, name: '2', price: 15, image: '' },
-        { id: 3, name: '3', price: 20, image: '' },
-        { id: 4, name: '4', price: 25, image: '' },
+        { id: 1, name: 'normal cool cat', price: 10, image: 'images/1.jpg' },
+        { id: 2, name: 'abnormal cool cat', price: 15, image: 'images/2.jpg' },
+        { id: 3, name: 'he doesnt know he cool', price: 20, image: 'images/3.jpg' },
+        { id: 4, name: 'bro so cat', price: 25, image: 'images/4.jpg' },
         { id: 5, name: '5', price: 30, image: '' },
         { id: 6, name: '6', price: 35, image: '' },
         { id: 7, name: '7', price: 40, image: '' },
