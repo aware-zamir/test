@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 2, name: 'abnormal cool cat', price: 15, image: 'images/2.jpg' },
         { id: 3, name: 'he doesnt know he cool', price: 20, image: 'images/3.jpg' },
         { id: 4, name: 'bro so cat', price: 25, image: 'images/4.jpg' },
-        { id: 5, name: '5', price: 30, image: '' },
-        { id: 6, name: '6', price: 35, image: '' },
-        { id: 7, name: '7', price: 40, image: '' },
-        { id: 8, name: '8', price: 45, image: '' },
-        { id: 9, name: '9', price: 50, image: '' },
-        { id: 10, name: '10', price: 55, image: '' },
+        { id: 5, name: 'puss after rewatching mincraft movie two days in row', price: 30, image: 'images/5.webp' },
+        { id: 6, name: 'witchcar', price: 35, image: 'images/6.webp' },
+        { id: 7, name: 'we have business to miew', price: 40, image: 'images/7.webp' },
+        { id: 8, name: 'fr?', price: 45, image: 'images/8.webp' },
+        { id: 9, name: 'you siad you like bikers right', price: 50, image: 'images/9.webp' },
+        { id: 10, name: 'catasrophic', price: 55, image: 'images/10.webp' },
     ];
 
     const cart = [];

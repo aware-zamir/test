@@ -1,19 +1,20 @@
 :root {
-    --primary-color: #000e01;
-    --secondary-color: #ff1500;
-    --background-color: #383838;
-    --text-color: #000000;
-    --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    --button-hover-color: #fd0400;
-    --footer-bg-color: linear-gradient(135deg, #0a0a0a, #f9f9f9);
-    --footer-text-color: #fff;
-    --gradient-bg: linear-gradient(135deg, #f9f9f9f9, #000000);
-    --button-gradient: linear-gradient(135deg, #ff1500, #ff6565);
+    --primary-color: #a3d14b;
+    --secondary-color: #f7e96d;
+    --background-color: #333;
+    --text-color: #fffef0;
+    --card-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    --button-hover-color: #c0d93d;
+    --footer-bg-color: linear-gradient(135deg, #222, #333);
+    --footer-text-color: #ddd;
+    --gradient-bg: linear-gradient(135deg, #333, #444);
+    --button-gradient: linear-gradient(135deg, #a3d14b, #c0d93d);
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: var(--background-color);
+    background-image: url('dark-lemon-pattern.png');
+    background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
@@ -21,7 +22,7 @@ body {
 
 header {
     background: var(--gradient-bg);
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 2rem;
     box-shadow: var(--card-shadow);
@@ -32,7 +33,7 @@ header h1 {
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 1.5px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 main {
@@ -51,18 +52,18 @@ main {
 }
 
 .product {
-    background: white;
+    background: #444;
     border-radius: 15px;
     padding: 1.5rem;
     width: 240px;
     text-align: center;
-    box-shadow: var(--card-shadow);
+    box-shadow: var(--card_shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product img {
@@ -74,7 +75,7 @@ main {
 }
 
 .product img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .product h3 {
@@ -86,7 +87,7 @@ main {
 .product p {
     margin: 0.5rem 0;
     font-size: 1.1rem;
-    color: #555;
+    color: #ddd;
 }
 
 .product button {
@@ -99,13 +100,13 @@ main {
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product button:hover {
     background: var(--button-hover-color);
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -121,7 +122,7 @@ footer {
 footer h2 {
     margin: 0 0 1rem;
     font-size: 1.8rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 footer ul {
@@ -139,5 +140,5 @@ footer p {
     font-size: 1.4rem;
     margin-top: 1rem;
     font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
