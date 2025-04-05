@@ -161,6 +161,6 @@ class NotebookApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.configure(bg='#2e2e2e')
+    root.configure(bg='#19191a')
     app = NotebookApp(root)
     root.mainloop()
