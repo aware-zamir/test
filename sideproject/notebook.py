@@ -23,8 +23,20 @@ class NotebookApp:
         self.notebook.bind("<ButtonRelease-1>", self.edit_tab_name)
 
         # Add New Tab Button
-        self.add_tab_button = ttk.Button(root, text="+", command=self.new_page)
+        self.add_tab_button = ttk.Button(root, text="+", command=self.new_page, style='Accent.TButton')
         self.add_tab_button.pack(side="top", padx=10, pady=5)
+
+        # Menu Bar
+        self.menu_bar = tk.Menu(root)
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.file_menu.add_command(label="New", command=self.new_page)
+        self.file_menu.add_command(label="Open", command=self.open_file)
+        self.file_menu.add_command(label="Save", command=self.save_file)
+        self.file_menu.add_command(label="Save As", command=self.save_file_as)
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label="Exit", command=self.on_close)
+        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
+        root.config(menu=self.menu_bar)
 
         self.load_autosave()
         if self.notebook.index("end") == 0:
@@ -46,6 +58,9 @@ class NotebookApp:
         self.style.configure('TButton', background='#444444', foreground=fg_color, borderwidth=0, padding=[10, 7], font=font)
         self.style.map('TButton', background=[("active", accent_color)])
         self.style.configure('TEntry', fieldbackground='#333333', foreground=fg_color, font=font, borderwidth=0)
+
+        self.style.configure('Accent.TButton', background=accent_color, foreground=fg_color, borderwidth=0, padding=[10, 7], font=font)
+        self.style.map('Accent.TButton', background=[("active", '#666666')])
 
         self.text_bg_color = '#333333'
         self.text_fg_color = fg_color
@@ -92,6 +107,49 @@ class NotebookApp:
         popup.grab_set()
         popup.focus_set()
         popup.wait_window()
+
+    def open_file(self):
+        file_path = filedialog.askopenfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+        if file_path:
+            try:
+                with open(file_path, "r") as file:
+                    content = file.read()
+                self.new_page()
+                current_tab = self.notebook.index("end") - 1
+                frame = self.notebook.winfo_children()[current_tab]
+                text_widget = frame.winfo_children()[0]
+                text_widget.insert("1.0", content)
+                self.notebook.tab(current_tab, text=os.path.basename(file_path))
+                self.current_file = file_path
+            except Exception as e:
+                self.show_error("Error", f"Could not open file:\n{e}")
+
+    def save_file(self):
+        if self.current_file:
+            try:
+                frame = self.notebook.winfo_children()[self.notebook.index("current")]
+                text_widget = frame.winfo_children()[0]
+                content = text_widget.get("1.0", tk.END)
+                with open(self.current_file, "w") as file:
+                    file.write(content)
+            except Exception as e:
+                self.show_error("Error", f"Could not save file:\n{e}")
+        else:
+            self.save_file_as()
+
+    def save_file_as(self):
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+        if file_path:
+            try:
+                frame = self.notebook.winfo_children()[self.notebook.index("current")]
+                text_widget = frame.winfo_children()[0]
+                content = text_widget.get("1.0", tk.END)
+                with open(file_path, "w") as file:
+                    file.write(content)
+                self.current_file = file_path
+                self.notebook.tab(self.notebook.index("current"), text=os.path.basename(file_path))
+            except Exception as e:
+                self.show_error("Error", f"Could not save file:\n{e}")
 
     def on_close(self):
         self.save_autosave()
