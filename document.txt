@@ -1,2 +1,1 @@
-skibidi
-update
+eas wont convert ma code to apk for production 
