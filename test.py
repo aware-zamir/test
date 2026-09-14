@@ -1,2 +1,1 @@
-print("lol
-")
+print("lol")
